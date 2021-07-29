@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/stock-exchanges" class="btn btn-dark">
+      <i class="fa fa-arrow-circle-o-left"></i> Back </a>
+  </div>
+  <div class="col-md-6"></div>
+</div>
+
+<div class="card bg-dark text-white">
+  <div class="card-header">Add Stock Exchange</div>
+  <div class="card-body">
+    <form #stockExchangeForm="ngForm" (ngSubmit)="onSubmit(stockExchangeForm)">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          #name="ngModel"
+          [ngClass]="{ 'is-invalid': name.errors && name.touched }"
+          [(ngModel)]="stockExchange.name"
+          placeholder="Stock Exchange Name"
+          minlength="2"
+          required
+        />
+        <div [hidden]="!name.errors?.required" class="invalid-feedback">
+          Stock Exchange name required
+        </div>
+        <div [hidden]="!name.errors?.minlength" class="invalid-feedback">
+          Must be atleast 2 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          name="details"
+          #details="ngModel"
+          [ngClass]="{'is-invalid': details.errors && details.touched}"
+          [(ngModel)]="stockExchange.details"
+          placeholder="Stock Exchange Details"
+          minlength="2"
+          required>
+        <div [hidden]="!details.errors?.required" class="invalid-feedback">
+          Details for the Stock Exchange required
+        </div>
+        <div [hidden]="!details.errors?.minlength" class="invalid-feedback">
+          Must be atleast 2 characters
+        </div>
+      </div>
+
+
+
+
+
+      
+      <input type="submit" value="Submit" class="btn btn-dark" />
+    </form>
+  </div>
+</div>
